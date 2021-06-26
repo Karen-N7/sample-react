@@ -1,4 +1,4 @@
-import img_1 from "./images/error/ufo.png";
+import img_1 from "./images/ufo.png";
 
 export default {
     images: {

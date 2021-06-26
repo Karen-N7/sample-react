@@ -2,7 +2,8 @@
 $colors: (
     // primary: #3498db,
     // pink: "#FF73FD",
-    danger: rgb(234, 84, 33),
+    // danger: rgb(234, 84, 33),
+    danger: rgb(220, 53, 69),
     primary: rgb(52, 152, 219),
     info: #17a2b8,
     success: rgb(27, 154, 27),
@@ -29,6 +30,29 @@ $fontSizes: (
 }
 //-->
 
+//<!-- GRADIENTS
+$gradients: (
+    primary: linear-gradient(180deg,color(info),color(success))
+);
+
+@function gradient($property: primary){
+    @return map-get($gradients,$property);
+}
+
+// <--
+
+
+//<!-- SHADOWS
+$shadows: (
+    success:0 3px 10px rgba(37,174,21,1)
+);
+
+@function shadow($property: success){
+    @return map-get($shadows,$property);
+}
+
+// <--
+
 //<!-- BREAKPOINTS
 $grid-breakpoints: (
   xs: 0,
@@ -51,9 +75,6 @@ $grid-breakpoints: (
 }
 // -->
 
-
-
-
 @mixin df($horizontal: center, $vertical: center) {
     display: flex;
     justify-content: $horizontal;
@@ -65,4 +86,10 @@ $grid-breakpoints: (
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+@mixin text() {
+    line-height: 1.5;
+    color: color(secondary);
+    letter-spacing: 0.03em;
 }
