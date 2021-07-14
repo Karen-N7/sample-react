@@ -26,17 +26,19 @@
 
 html {
     // @include mq(1920px) {}//default 16px
-      
-    @include mq(2560px) {//2k
+
+    @include mq(2560px) {
+        //2k
         font-size: 16 * 100 / (1920 * 100 / 2560) + px;
     }
-    @include mq(3840px) {//4k
+    @include mq(3840px) {
+        //4k
         font-size: 16 * 100 / (1920 * 100 / 3840) + px;
     }
 }
+
 body {
     margin: 20rem;
-    height: 200vh;
     font-family: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
         "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -87,7 +89,7 @@ li {
 }
 a {
     text-decoration: none;
-    color: #000;
+    color: color(dark);
 }
 
 img {
@@ -99,104 +101,26 @@ img {
 // <!-- CSS CLASS SELECTORS
 .container {
     width: 96%;
-    max-width: 1260px;
+    max-width: 1140px;
     margin: 0 auto;
+
+    @include mq(1920px) {
+        //full hd
+        max-width: mw(xl);
+    }
+    @include mq(2560px) {
+        //2k
+        max-width: mw(xxl);
+    }
+    @include mq(3840px) {
+        //4k
+        max-width: mw(xxxl);
+    }
 }
 // -->
 
 // <!-- BUTTONS
 
-// ------old
-// .btn {
-//     display: inline-block;
-//     font-weight: 400;
-//     text-align: center;
-//     white-space: nowrap;
-//     vertical-align: middle;
-//     user-select: none;
-//     user-select: none;
-//     border: 0.15em solid;
-//     border: none; // cut the line if necessary
-//     padding: 0.375em 0.75em;
-//     font-size: 1rem;
-//     line-height: 1.5;
-//     border-radius: 0.25em;
-//     backface-visibility: hidden;
-//     background: transparent;
-//     outline: none;
-//     letter-spacing: 0.03em;
-//     cursor: pointer;
-//     transform: scale(1);
-//     transition: all 0.3s ease,transform cubic-bezier(0.18, 0.89, 0.32, 1.28);
-//     &::first-letter {
-//         text-transform: capitalize;
-//     }
-
-//     &-primary {
-//         color: #fff;
-//         border-color: transparent;
-//         background: rgba(52, 152, 219, 0.8);
-//         &:hover {
-//             background: rgba(52, 152, 219, 0.9);
-//             color: #fff;
-//         }
-//         &:active,
-//         &.active {
-//             background: color(primary);
-//             color: #fff;
-//         }
-//     }
-//     &-outline {
-//         &-primary {
-//             border-color: rgba(52, 152, 219, 0.8);
-//             color: rgba(52, 152, 219, 0.8);
-//             &:hover {
-//                 background: rgba(52, 152, 219, 0.9);
-//                 border-color: rgba(52, 152, 219, 0.9);
-//                 color: #fff;
-//             }
-//             &:active,
-//             &.active {
-//                 background: color(primary);
-//                 border-color: color(primary);
-//                 color: #fff;
-//             }
-//         }
-//     }
-//     &-sm {
-//         font-size: 0.8rem;
-//     }
-//     &-lg {
-//         font-size: 2rem;
-//     }
-//     &-block {
-//         width: 100%;
-//     }
-//     // &:hover {
-//     //     transform: translateY(-5px);
-//     // }
-//     // &:active {
-//     //     transform: translateY(0);
-//     // }
-
-//     overflow: hidden;
-//     box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
-//     span.ripple {
-//         position: absolute;
-//         border-radius: 50%;
-//         transform: scale(0);
-//         animation: ripple 600ms linear;
-//         background-color: rgba(255, 255, 255, 0.7);
-//     }
-
-//     @keyframes ripple {
-//         to {
-//             transform: scale(4);
-//             opacity: 0;
-//         }
-//     }
-// }
-// ------new
 .btn {
     display: inline-block;
     font-size: 1rem;
@@ -210,6 +134,9 @@ img {
     cursor: pointer;
     box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.25);
     white-space: nowrap;
+    text-align: center;
+    user-select: none;
+    outline: none;
     transition: all 0.5s;
     &::first-letter {
         text-transform: capitalize;
@@ -227,7 +154,7 @@ img {
     &-light {
         color: color(dark);
         background-color: #fff;
-  
+
         &:hover {
             box-shadow: 0 13px 15px 0 rgba(0, 0, 0, 0.25);
         }
@@ -354,7 +281,7 @@ body {
     height: 10rem;
     border-radius: 50%;
     box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.1), -1rem -1rem 2rem rgba(255, 255, 255, 1);
-    
+
     &:hover {
         box-shadow: inset 1rem 1rem 2rem rgba(0, 0, 0, 0.1), inset -1rem -1rem 2rem rgba(255, 255, 255, 1);
     }
@@ -368,16 +295,13 @@ body {
     width: 10rem;
     height: 10rem;
     border-radius: 50%;
-    box-shadow: -2px -2px 8px rgba(255, 255, 255, 1),
-    -2px -2px 12px rgba(255, 255, 255, 0.5),
-    inset 2px 2px 4px rgba(255, 255, 255, 0.1),
-    2px 2px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: -2px -2px 8px rgba(255, 255, 255, 1), -2px -2px 12px rgba(255, 255, 255, 0.5),
+        inset 2px 2px 4px rgba(255, 255, 255, 0.1), 2px 2px 8px rgba(0, 0, 0, 0.15);
     &:hover {
         box-shadow: inset -2px -2px 8px rgba(255, 255, 255, 1), inset -2px -2px 12px rgba(255, 255, 255, 0.5),
             inset 2px 2px 4px rgba(255, 255, 255, 0.1), inset 2px 2px 8px rgba(0, 0, 0, 0.15);
     }
 }
-
 
 .neo-3 {
     display: flex;
@@ -388,16 +312,11 @@ body {
     height: 66px;
     border-radius: 20px;
     transition: box-shadow 399ms ease-in-out;
-    box-shadow: 
-      inset 0 0 15px rgba(55, 84, 170,0),
-      inset 0 0 20px rgba(255, 255, 255,0),
-      7px 7px 15px rgba(55, 84, 170,.15),
-      -7px -7px 20px rgba(255, 255, 255,1),
-      inset 0px 0px 4px rgba(255, 255, 255,.2);
-      &:hover {
-          box-shadow: 
-          inset 7px 7px 15px rgba(55, 84, 170,.15),
-          inset -7px -7px 20px rgba(255, 255, 255,1),
-          0px 0px 4px rgba(255, 255, 255,.2);
-        }
+    box-shadow: inset 0 0 15px rgba(55, 84, 170, 0), inset 0 0 20px rgba(255, 255, 255, 0),
+        7px 7px 15px rgba(55, 84, 170, 0.15), -7px -7px 20px rgba(255, 255, 255, 1),
+        inset 0px 0px 4px rgba(255, 255, 255, 0.2);
+    &:hover {
+        box-shadow: inset 7px 7px 15px rgba(55, 84, 170, 0.15), inset -7px -7px 20px rgba(255, 255, 255, 1),
+            0px 0px 4px rgba(255, 255, 255, 0.2);
+    }
 }
